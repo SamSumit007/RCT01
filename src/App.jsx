@@ -1,60 +1,83 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import Todos from './components/Todos';
+import { AppHeader, Applogo, AppStyled, Flexbox } from './Appstyled';
+import logo from './logo.svg';
+
+import { Button,Accordion, Box,  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon, } from '@chakra-ui/react'
+import DrawerExample from './components/Drawer';
+import Pin from './components/pin';
 
 function App() {
-  //const [showcomponent, setshowcomponent] = useState();
-
-  const [count, setCount] = useState(0);
-   const [count1, setCount1] = useState(0);
- 
-
-fetch("http://localhost:8080/todos")
-.then((r) => r.json())
-.then((d)=> {
-  console.log(d);
-});
-  useEffect ( ()=>{
-    console.log("in 1", count, count1);
-  })
-  
-
-// let A = ()=>{
-   
-
-// <div onClick={setcount(count+1)}>comp A{count}</div>
-// }
-// let B = ()=> <div>comp B</div>r
-
   return (
-    <div className="App">
-    <div  
-    
-      onClick={()=>setCount(count+1)}
-    >
-    counter1: {count}
-    
-    </div>
-    <div 
-    
-    onClick={()=>setCount1(count1+2)}
-  >
-  counter2: {count1}
-  
-  </div>
-    <Todos />
+    <AppStyled>
+      <AppHeader>
+        <Applogo src={logo}  alt="logo" />
+        <Flexbox flexDirection="column">
+        <div>A</div>
+        <div>B</div> </Flexbox>
+        <Button colorScheme='teal' size='md'>
+    Button
+  </Button>
+  <Breadcrumb>
+  <BreadcrumbItem>
+    <BreadcrumbLink href='#'>Home</BreadcrumbLink>
+  </BreadcrumbItem>
+
+  <BreadcrumbItem>
+    <BreadcrumbLink href='#'>Docs</BreadcrumbLink>
+  </BreadcrumbItem>
+
+  <BreadcrumbItem isCurrentPage>
+    <BreadcrumbLink href='#'>Breadcrumb</BreadcrumbLink>
+  </BreadcrumbItem>
+</Breadcrumb>
+  <Accordion>
+  <AccordionItem>
+    <h2>
+      <AccordionButton>
+        <Box flex='1' textAlign='left'>
+          Section 1 title
+        </Box>
+        <AccordionIcon />
+      </AccordionButton>
+    </h2>
+    <AccordionPanel pb={4}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </AccordionPanel>
+  </AccordionItem>
+
+  <AccordionItem>
+    <h2>
+      <AccordionButton>
+        <Box flex='1' textAlign='left'>
+          Section 2 title
+        </Box>
+        <AccordionIcon />
+      </AccordionButton>
+    </h2>
+    <AccordionPanel pb={4}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </AccordionPanel>
+  </AccordionItem>
+</Accordion>
 
 
+<DrawerExample />
+<Pin />
 
-  </div>
-
+      </AppHeader>
+    </AppStyled>
   );
 }
 
 export default App;
-
-
-
-// <div>
-//     {showcomponent ? <A/>: <B/>}
-//     </div>
