@@ -2,8 +2,8 @@ import { useReducer, useState } from 'react';
 
 const ACTIONS = {
     ADD_TODO: 'add-todo',
-    TOGGLE_COMPLETE: 'toggle-complete'
-  
+    TOGGLE_COMPLETE: 'toggle-complete',
+    DELETE_TODO: 'delete-todo'
   }
 
   function reducer(state, action) {
@@ -23,6 +23,14 @@ const ACTIONS = {
              ...state,
             todos: state.todos.map(todo => todo.id === action.payload.id
             ? {...todo, complete: !todo.complete} 
+            : todo
+            )
+       };
+       case ACTIONS.DELETE_TODO: 
+         return{
+             ...state,
+            todos: state.todos.map(todo => todo.id === action.payload.id
+            ? {...todo, delete: todo.id} 
             : todo
             )
        };
@@ -55,7 +63,7 @@ const ACTIONS = {
           <button>SUBMIT</button>
           </form>
           <ul>
-          {todos.map(todo => <Todo id={todo.id} complete={todo.complete} text={todo.text} dispatch={dispatch} key={todo.id}/>)}
+          {todos.map(todo => <Todo id={todo.id} complete={todo.complete} delete={todo.id} text={todo.text} dispatch={dispatch} key={todo.id}/>)}
           </ul>
         </div>
   
