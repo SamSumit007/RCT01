@@ -75,7 +75,7 @@ const ACTIONS = {
           return(
 
             <li>          
-              <a style={complete ? {'textDecoration' : 'line-through'} : {}} href={'#'} onClick={() => 
+              <a style={complete ? { 'textDecoration' : 'line-through' } : {}} href={'#'} onClick={() => 
           
               dispatch({
                 type: ACTIONS.TOGGLE_COMPLETE,
