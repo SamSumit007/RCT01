@@ -1,14 +1,4 @@
 .App {
-  text-align: center;
-  height: 100vh;
-}
-
-.Light{
-background-color: white;
-color: black;
-}
-.Dark{
-  background-color: black;
-color: white;
-
-}
+    text-align: center;
+  }
+  
