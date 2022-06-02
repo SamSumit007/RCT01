@@ -1,23 +1,34 @@
-import React from 'react'
-import { Link,  useNavigate } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Authcontext } from '../context/Auth';
 
-const navigate = useNavigate
 const Navbar = () => {
-    const handleOnClick = (id)=>{
-      if (id === 1) {
-        navigate("/products/1")
-      }
+ const {isAuth, logout} = useContext(Authcontext)
+    const navigate = useNavigate();
+    const handlelogclick =() => {
+        if(isAuth){
+            logout();
+            navigate("/")
+
+        }   
+        else {
+            navigate("/login") 
+        }
+        
     }
   return (
-    <div> 
-      <Link to="/">Home</Link>
-      <Link to="about">About</Link>
-      <Link to="products">Products</Link>
-      <button onClick={() =>handleOnClick(1)}>go 1</button>
-      <button onClick={() =>handleOnClick(2)}>go 2</button>
+    <div>Navbar :
+        <Link to="/">Home</Link>
+{/* {isAuth &&  */}
+<Link to="feeds">Feeds</Link>
+{/* } */}
+{/* { isAuth && */}
+<Link to="post">Post</Link>
+{/* } */}
+<button onClick={handlelogclick}>{isAuth ? "logout": "login"}</button>
 
-        
-        </div>
+
+    </div>
   )
 }
 
