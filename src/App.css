@@ -1,15 +1,6 @@
 .App {
   text-align: center;
-  height: 100vh;
   font-weight: bold;
-}
-
-.Light{
-background-color: white;
-color: black;
-}
-.Dark{
-  background-color: black;
-color: white;
-
+  font-size: medium;
+  margin: auto;
 }
